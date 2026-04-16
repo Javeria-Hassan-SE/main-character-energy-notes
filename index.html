@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Main Character Era — My Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-deep: #c9536a;
+    --pink-mid: #e8829a;
+    --pink-light: #f4b8c8;
+    --pink-blush: #fde8ef;
+    --pink-pale: #fff5f8;
+    --cream: #fffaf5;
+    --brown-soft: #8b5e6a;
+    --brown-light: #c4a0aa;
+    --gold: #d4a853;
+    --gold-light: #f0d080;
+    --text-dark: #3d1f2d;
+    --text-mid: #7a4458;
+    --text-light: #b07a8e;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='4' fill='%23e8829a' opacity='0.8'/%3E%3C/svg%3E") 10 10, auto;
+  }
+
+  /* ---- FLOATING BACKGROUND ELEMENTS ---- */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .float-bow {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.12;
+    animation: floatDrift linear infinite;
+    user-select: none;
+  }
+
+  .float-bow:nth-child(1)  { left: 5%;  top: 10%; font-size: 1.8rem; animation-duration: 18s; animation-delay: 0s; }
+  .float-bow:nth-child(2)  { left: 90%; top: 25%; font-size: 2.4rem; animation-duration: 22s; animation-delay: -4s; }
+  .float-bow:nth-child(3)  { left: 15%; top: 60%; font-size: 1.4rem; animation-duration: 16s; animation-delay: -8s; }
+  .float-bow:nth-child(4)  { left: 75%; top: 70%; font-size: 2.2rem; animation-duration: 20s; animation-delay: -2s; }
+  .float-bow:nth-child(5)  { left: 45%; top: 15%; font-size: 1.6rem; animation-duration: 25s; animation-delay: -6s; }
+  .float-bow:nth-child(6)  { left: 60%; top: 85%; font-size: 2rem;   animation-duration: 19s; animation-delay: -10s; }
+  .float-bow:nth-child(7)  { left: 30%; top: 40%; font-size: 1.2rem; animation-duration: 14s; animation-delay: -3s; }
+  .float-bow:nth-child(8)  { left: 82%; top: 50%; font-size: 1.8rem; animation-duration: 21s; animation-delay: -7s; }
+  .float-bow:nth-child(9)  { left: 8%;  top: 80%; font-size: 2.6rem; animation-duration: 17s; animation-delay: -12s; }
+  .float-bow:nth-child(10) { left: 55%; top: 55%; font-size: 1.5rem; animation-duration: 23s; animation-delay: -5s; }
+
+  @keyframes floatDrift {
+    0%   { transform: translateY(0px) rotate(0deg) scale(1); }
+    33%  { transform: translateY(-30px) rotate(10deg) scale(1.05); }
+    66%  { transform: translateY(15px) rotate(-8deg) scale(0.95); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  }
+
+  /* ---- HERO HEADER ---- */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(160deg, #fff0f5 0%, #fde4ee 50%, #ffe8d6 100%);
+    border-bottom: 2px dashed var(--pink-light);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(232,130,154,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(212,168,83,0.1) 0%, transparent 50%);
+  }
+
+  .hero-bow-top {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 12px;
+    animation: bowBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bowBounce {
+    0%, 100% { transform: scale(1) rotate(-3deg); }
+    50%       { transform: scale(1.15) rotate(3deg); }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    color: var(--pink-deep);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+    font-size: 0.65em;
+  }
+
+  .hero-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--brown-soft);
+    margin: 16px 0 28px;
+    opacity: 0.85;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    background: white;
+    border: 1.5px solid var(--pink-light);
+    color: var(--pink-deep);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(201,83,106,0.1);
+    transition: all 0.25s;
+  }
+
+  .hero-tag:hover {
+    background: var(--pink-deep);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(201,83,106,0.25);
+  }
+
+  /* ---- TOC ---- */
+  .toc-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 48px auto;
+    padding: 0 20px;
+  }
+
+  .toc-card {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 40px;
+    border: 2px solid var(--pink-light);
+    box-shadow: 0 8px 40px rgba(201,83,106,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .toc-card::before {
+    content: '🎀';
+    position: absolute;
+    top: -12px;
+    right: 32px;
+    font-size: 2.2rem;
+    animation: bowBounce 3s ease-in-out infinite;
+  }
+
+  .toc-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--pink-deep);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .toc-list li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: all 0.2s;
+    border: 1.5px solid transparent;
+  }
+
+  .toc-list li a:hover {
+    background: var(--pink-blush);
+    border-color: var(--pink-light);
+    color: var(--pink-deep);
+    transform: translateX(4px);
+  }
+
+  .toc-num {
+    background: var(--pink-blush);
+    color: var(--pink-deep);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ---- MAIN CONTENT ---- */
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ---- CHAPTER CARD ---- */
+  .chapter {
+    background: white;
+    border-radius: 28px;
+    padding: 44px 48px;
+    margin-bottom: 40px;
+    border: 2px solid var(--pink-light);
+    box-shadow: 0 6px 32px rgba(201,83,106,0.07);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .chapter.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .chapter::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--pink-mid), var(--gold-light), var(--pink-light));
+    border-radius: 28px 28px 0 0;
+  }
+
+  .chapter-deco {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    font-size: 2.2rem;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .chapter-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .chapter-num {
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+    color: white;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 6px 18px rgba(201,83,106,0.3);
+    position: relative;
+    top: 2px;
+  }
+
+  .chapter-title-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .chapter-title-block .chapter-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.05rem;
+    color: var(--pink-mid);
+  }
+
+  /* ---- SECTION BLOCKS ---- */
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--pink-light), transparent);
+  }
+
+  /* ---- NOTES LIST ---- */
+  .notes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .notes-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--pink-pale);
+    border-left: 3px solid var(--pink-light);
+    transition: all 0.2s;
+  }
+
+  .notes-list li:hover {
+    background: var(--pink-blush);
+    border-left-color: var(--pink-mid);
+    transform: translateX(4px);
+  }
+
+  .notes-list li .li-icon {
+    flex-shrink: 0;
+    margin-top: 3px;
+    font-size: 0.9rem;
+  }
+
+  /* ---- URDU/QUOTE BLOCK ---- */
+  .quote-block {
+    background: linear-gradient(135deg, #fff0f5, #ffecd4);
+    border: 1.5px solid var(--pink-light);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    position: relative;
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    color: var(--brown-soft);
+    line-height: 1.6;
+  }
+
+  .quote-block::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: white;
+    padding: 0 6px;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ---- KEY INSIGHT ---- */
+  .insight-box {
+    background: linear-gradient(135deg, var(--pink-deep), #b84d6a);
+    color: white;
+    border-radius: 18px;
+    padding: 22px 26px;
+    margin: 20px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 8px 24px rgba(201,83,106,0.25);
+  }
+
+  .insight-box .insight-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .insight-box p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+  }
+
+  .insight-box strong {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.82rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  /* ---- ADVANCED ADD-ON ---- */
+  .advanced-box {
+    background: linear-gradient(135deg, #fffbf0, #fff5e8);
+    border: 1.5px solid var(--gold-light);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+
+  .advanced-box .adv-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .advanced-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .advanced-box ul li {
+    font-size: 0.9rem;
+    color: var(--brown-soft);
+    line-height: 1.6;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .advanced-box ul li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 0.5rem;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ---- MINI CHALLENGE ---- */
+  .challenge-box {
+    background: white;
+    border: 2px solid var(--pink-mid);
+    border-radius: 20px;
+    padding: 22px 26px;
+    margin-top: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .challenge-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--pink-deep), var(--pink-light));
+  }
+
+  .challenge-box .challenge-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .challenge-box .challenge-header span {
+    font-size: 1.3rem;
+  }
+
+  .challenge-box .challenge-header h4 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--pink-deep);
+    font-weight: 600;
+  }
+
+  .challenge-box p {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    padding-left: 4px;
+  }
+
+  .challenge-box .check-area {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .challenge-box .check-area input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--pink-light);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .challenge-box .check-area input[type="checkbox"]:checked {
+    background: var(--pink-deep);
+    border-color: var(--pink-deep);
+  }
+
+  .challenge-box .check-area input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .challenge-box .check-area label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    transition: color 0.2s;
+  }
+
+  .challenge-box .check-area input:checked ~ label {
+    color: var(--pink-deep);
+    text-decoration: line-through;
+    text-decoration-color: var(--pink-mid);
+  }
+
+  /* ---- DIVIDER ---- */
+  .bow-divider {
+    text-align: center;
+    margin: 8px 0 28px;
+    font-size: 1.2rem;
+    color: var(--pink-light);
+    letter-spacing: 10px;
+    opacity: 0.7;
+  }
+
+  /* ---- PROGRESS BAR ---- */
+  .progress-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(244,184,200,0.3);
+    z-index: 999;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-deep), var(--gold-light));
+    width: 0%;
+    transition: width 0.1s;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ---- BACK TO TOP ---- */
+  .back-top {
+    position: fixed;
+    bottom: 32px;
+    right: 28px;
+    background: var(--pink-deep);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(201,83,106,0.35);
+    transition: all 0.25s;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .back-top.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .back-top:hover {
+    background: var(--pink-mid);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(201,83,106,0.4);
+  }
+
+  /* ---- SPARKLE CURSOR TRAIL ---- */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 1rem;
+    animation: sparkleAnim 0.8s ease-out forwards;
+  }
+
+  @keyframes sparkleAnim {
+    0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%,-100%) scale(0.3); }
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 50px 20px 60px;
+    background: linear-gradient(160deg, #fde8ef, #fff5f8);
+    border-top: 2px dashed var(--pink-light);
+  }
+
+  .footer p {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--brown-soft);
+    margin-bottom: 8px;
+  }
+
+  .footer small {
+    font-size: 0.8rem;
+    color: var(--brown-light);
+  }
+
+  /* ---- RIBBON ---- */
+  .ribbon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--pink-light), var(--gold-light));
+    color: var(--text-dark);
+    padding: 4px 16px 4px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(201,83,106,0.15);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 640px) {
+    .chapter { padding: 28px 22px; }
+    .toc-list { grid-template-columns: 1fr; }
+    .chapter-header { flex-direction: row; }
+    .toc-card { padding: 28px 22px; }
+    .chapter-title-block h2 { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- Floating Background -->
+<div class="bg-layer" aria-hidden="true">
+  <span class="float-bow">🎀</span>
+  <span class="float-bow">🌸</span>
+  <span class="float-bow">🎀</span>
+  <span class="float-bow">✨</span>
+  <span class="float-bow">🌷</span>
+  <span class="float-bow">🎀</span>
+  <span class="float-bow">💗</span>
+  <span class="float-bow">🎀</span>
+  <span class="float-bow">🌸</span>
+  <span class="float-bow">✨</span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-bow-top">🎀</span>
+  <h1>
+    My Main Character Era
+    <em>confidence · clarity · growth</em>
+  </h1>
+  <p class="hero-sub">Personal notes — because she who takes notes, takes charge ✍🏻</p>
+  <div class="hero-tags">
+    <span class="hero-tag">🌸 10 Chapters</span>
+    <span class="hero-tag">💗 Self-Confidence</span>
+    <span class="hero-tag">✨ Mindset Shifts</span>
+    <span class="hero-tag">🎀 Friendship Wisdom</span>
+    <span class="hero-tag">🌷 Mini Challenges</span>
+    <span class="hero-tag">💫 High Value Energy</span>
+  </div>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-wrap">
+  <div class="toc-card">
+    <h2>🎀 Chapters at a Glance</h2>
+    <ul class="toc-list">
+      <li><a href="#ch1"><span class="toc-num">1</span> Main Character Energy</a></li>
+      <li><a href="#ch2"><span class="toc-num">2</span> Fighting Insecurity</a></li>
+      <li><a href="#ch3"><span class="toc-num">3</span> Direction Over Confidence</a></li>
+      <li><a href="#ch4"><span class="toc-num">4</span> Trusting Your Decisions</a></li>
+      <li><a href="#ch5"><span class="toc-num">5</span> Self-Discipline & Goals</a></li>
+      <li><a href="#ch6"><span class="toc-num">6</span> Social Grace & Awkwardness</a></li>
+      <li><a href="#ch7"><span class="toc-num">7</span> Healthy Female Friendships</a></li>
+      <li><a href="#ch8"><span class="toc-num">8</span> Friendship Boundaries</a></li>
+      <li><a href="#ch9"><span class="toc-num">9</span> Releasing Old Friendships</a></li>
+      <li><a href="#ch10"><span class="toc-num">10</span> Staying Her — Final Rules</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- ===== CHAPTER 1 ===== -->
+  <article class="chapter" id="ch1">
+    <div class="chapter-deco">🎀</div>
+    <div class="chapter-header">
+      <div class="chapter-num">1</div>
+      <div class="chapter-title-block">
+        <h2>Decode Your Main Character Energy</h2>
+        <span class="chapter-subtitle">The difference between existing and actually living ✨</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 Two Types of Mindset</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">🤖</span><span><strong>NPC (Non-Playable Character):</strong> Follows trends, never initiates, mirrors people around them, sacrifices identity to fit in — always reacting, never creating.</span></li>
+      <li><span class="li-icon">👑</span><span><strong>Main Character Mindset:</strong> She initiates. She thinks about who she genuinely is and builds from that. She's not the supporting role in someone else's story — she's writing her own.</span></li>
+    </ul>
+
+    <div class="section-label">🌸 The 3 Killers of Main Character Energy</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">📱</span><span><strong>Endless Scrolling:</strong> Numbs your creativity, steals your time, and keeps you passively consuming other people's highlight reels instead of building your own story.</span></li>
+      <li><span class="li-icon">👀</span><span><strong>Comparison:</strong> The thief of all joy. You can't run your race while looking sideways at someone else's lane.</span></li>
+      <li><span class="li-icon">🙏</span><span><strong>People Pleasing:</strong> When your identity is built around making others comfortable, you slowly erase yourself. You cannot be the main character in your life if you're always casting others in the lead.</span></li>
+    </ul>
+
+    <div class="section-label">🌸 Confidence & Perception</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">💭</span><span>Confidence isn't something you get — it's something you perceive yourself into. <em>You are what you consistently think you are.</em></span></li>
+      <li><span class="li-icon">🌷</span><span>Healthy friendships make you expand, grow, and feel capable — not shrink, second-guess, or perform.</span></li>
+    </ul>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li>Psychologists call NPC behaviour <strong>external locus of control</strong> — you believe your life is shaped by others. Main character energy is an <strong>internal locus of control</strong> — you own your choices and their outcomes.</li>
+        <li>The identity you perform repeatedly becomes the identity you believe. This is the core of Cognitive Behavioural Theory: thoughts shape feelings, feelings shape behaviour, behaviour reinforces beliefs.</li>
+        <li>High-value women don't chase relevance. They cultivate depth — in their skills, relationships, and self-knowledge. Trends come and go; your authentic core is permanent currency.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Write 3 lines of your main character energy — not who you want to be, but who you already are at your core. What makes you <em>you</em>? Write it, read it out loud, and keep it somewhere visible.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c1">
+        <label for="c1">Done! I wrote my 3 lines 💗</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 2 ===== -->
+  <article class="chapter" id="ch2">
+    <div class="chapter-deco">🌸</div>
+    <div class="chapter-header">
+      <div class="chapter-num">2</div>
+      <div class="chapter-title-block">
+        <h2>Fighting With Insecurity</h2>
+        <span class="chapter-subtitle">Your self-image is your foundation 🏛️</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 Self Image vs Confidence</div>
+
+    <div class="quote-block">
+      "Agar apki self image sirf appearance per depend karti hai tou apka confidence bohat fragile hoga."
+      <br><small style="font-family: 'DM Sans'; font-size:0.78rem; color: var(--brown-light); margin-top:8px; display:block;">Translation: If your self-image depends only on how you look, your confidence will be extremely fragile.</small>
+    </div>
+
+    <ul class="notes-list">
+      <li><span class="li-icon">🏗️</span><span><strong>Real Self-Image =</strong> your habits, routines, and structure — not your face, body, or what people think of you at a glance.</span></li>
+      <li><span class="li-icon">⚓</span><span><strong>Confidence = Stability.</strong> It comes from a reliable, structured self — someone who shows up for herself consistently, not just when she feels inspired.</span></li>
+      <li><span class="li-icon">🚫</span><span>Don't model your choices on friends. Have your own taste, your own decisions, your own standards. Borrowed identity has a very short shelf life.</span></li>
+      <li><span class="li-icon">💀</span><span>Bad habits quietly assassinate your confidence. Every time you break a promise to yourself (skip the workout, doom scroll instead of reading), you're sending your subconscious the message: <em>"I am not someone I can rely on."</em></span></li>
+    </ul>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li><strong>Social comparison theory</strong> (Festinger, 1954): We naturally evaluate ourselves against others. To break the cycle, replace upward comparison (she has more than me) with <strong>temporal self-comparison</strong> (am I better than I was 6 months ago?).</li>
+        <li>A woman who knows her values doesn't need external validation to feel solid. <strong>Values-based identity</strong> is the most unshakeable kind — it doesn't depend on how you look on a bad day or how many likes you got.</li>
+        <li>Insecurity that comes from appearance is always seasonal — your body changes, trends shift. Insecurity that comes from lack of routine is fixable with action.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Identify one small bad habit that erodes your self-trust (late waking, phone first thing in the morning, skipping a commitment). Write it down. Write one replacement habit you'll do instead — just once today.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c2">
+        <label for="c2">Identified my habit and took one step 🌷</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 3 ===== -->
+  <article class="chapter" id="ch3">
+    <div class="chapter-deco">✨</div>
+    <div class="chapter-header">
+      <div class="chapter-num">3</div>
+      <div class="chapter-title-block">
+        <h2>Direction Over Confidence</h2>
+        <span class="chapter-subtitle">The real secret nobody talks about 🔑</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 The Real Root Problem</div>
+
+    <div class="insight-box">
+      <span class="insight-icon">💡</span>
+      <p><strong>The Big Reframe</strong> Most girls don't actually lack confidence — they lack direction. An idle mind without purpose is a factory of overthinking, insecurity, and comparison. Busyness with meaning is the cure.</p>
+    </div>
+
+    <ul class="notes-list">
+      <li><span class="li-icon">🌀</span><span><strong>Boredom feeds insecurity.</strong> When you have nothing urgent to build or protect, your mind turns inward with criticism. "Why am I like this? Why don't I look like her?"</span></li>
+      <li><span class="li-icon">🧠</span><span><strong>Idle mind = overthinking factory.</strong> Free time without intention doesn't recharge you — it grows your anxiety.</span></li>
+      <li><span class="li-icon">🕯️</span><span><strong>You don't need motivation — you need purpose and discipline.</strong> Motivation is a feeling; it comes and goes. Purpose and discipline are decisions.</span></li>
+      <li><span class="li-icon">🎨</span><span>Have your own thing that keeps you busy. Something that's entirely yours — a skill, a project, a craft, a goal. Something that makes you interesting to yourself.</span></li>
+      <li><span class="li-icon">🔒</span><span>The most confident woman in the room is usually the one with the most going on in her life — not the most attention.</span></li>
+    </ul>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li><strong>Flow state</strong> (Csíkszentmihályi): Deep engagement in meaningful work produces a natural confidence that no amount of affirmations can replicate. Find your flow activities.</li>
+        <li>Purpose acts as an identity anchor. When you know what you're about and what you're building, external opinions carry less weight — your internal compass is calibrated.</li>
+        <li>High-value women are <strong>fascinating to themselves</strong> first. They have rich inner lives, ongoing projects, and goals that excite them. This magnetic quality attracts others without effort.</li>
+        <li>The antidote to comparison is creation. When you're deeply busy building something, you forget to compare.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Pick your "own thing" — one interest, skill, or project that is entirely yours. It doesn't have to be productive or profitable yet. It just has to be <em>yours</em>. Write it down and give it 20 minutes today.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c3">
+        <label for="c3">I claimed my own thing ✨</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 4 ===== -->
+  <article class="chapter" id="ch4">
+    <div class="chapter-deco">💗</div>
+    <div class="chapter-header">
+      <div class="chapter-num">4</div>
+      <div class="chapter-title-block">
+        <h2>Trusting Your Own Decisions</h2>
+        <span class="chapter-subtitle">Strengthen your judgment muscle 💪🏻</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 Why Girls Doubt Themselves</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">🗣️</span><span><strong>Asking 10 people for advice weakens your judgment muscle.</strong> Every time you outsource a decision, you signal to yourself that you can't be trusted to know what's right for you.</span></li>
+      <li><span class="li-icon">⚡</span><span><strong>An imperfect decision is better than endless indecision.</strong> Action, even flawed, generates data. Paralysis generates nothing but more anxiety.</span></li>
+      <li><span class="li-icon">🎯</span><span>The more you make decisions for yourself — and live with them — the more your self-trust compounds over time.</span></li>
+    </ul>
+
+    <div class="insight-box">
+      <span class="insight-icon">💫</span>
+      <p><strong>On Seeking Advice</strong> There's a difference between consulting one trusted, qualified person and crowd-sourcing every life choice. Advice from many people creates noise; your gut, once trained, creates signal.</p>
+    </div>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li><strong>Analysis paralysis</strong> is the enemy of forward movement. Research shows that having too many options reduces satisfaction and increases anxiety (paradox of choice, Barry Schwartz). Decide within a reasonable window and commit.</li>
+        <li>Every decision you own — even ones that didn't pan out — builds self-respect. Every decision you outsource erodes it slowly.</li>
+        <li>Practice the <strong>10-minute journal method</strong> for decisions: write the situation, your instinct (first answer), the worst realistic outcome, the best realistic outcome. Most decisions become obvious within this frame.</li>
+        <li>High-value women are decisive. Not reckless — but they have a formed opinion and they act on it. Decisiveness signals self-respect to yourself and others.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Make one decision today entirely on your own — without asking anyone. It can be small (what to eat, what to wear, what to work on) or larger. Make the call, own it, and notice how it feels.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c4">
+        <label for="c4">Made a solo decision today 💪🏻</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 5 ===== -->
+  <article class="chapter" id="ch5">
+    <div class="chapter-deco">🌷</div>
+    <div class="chapter-header">
+      <div class="chapter-num">5</div>
+      <div class="chapter-title-block">
+        <h2>Self-Discipline & Crushing Your Goals</h2>
+        <span class="chapter-subtitle">Ambition without action is just a daydream 🎯</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 The Lazy-Ambitious Trap</div>
+
+    <div class="insight-box">
+      <span class="insight-icon">⚡</span>
+      <p><strong>The Deadly Combo</strong> Being both lazy and ambitious — dreaming big but taking no action — is one of the most common confidence killers. It creates a gap between who you want to be and who you're being, and that gap breeds shame and self-loathing.</p>
+    </div>
+
+    <ul class="notes-list">
+      <li><span class="li-icon">🔁</span><span><strong>Lack of consistency kills self-respect.</strong> When you repeatedly break promises to yourself, you can't look yourself in the mirror with pride — and that shatters confidence from the inside.</span></li>
+      <li><span class="li-icon">🏛️</span><span><strong>Self-discipline = a structured routine</strong> that reminds you daily: "I am someone who shows up for herself."</span></li>
+      <li><span class="li-icon">🔪</span><span><strong>Discipline kills insecurity.</strong> It makes your body language naturally confident, your energy grounded, your posture upright.</span></li>
+      <li><span class="li-icon">🚫</span><span>You don't need a perfect 4-hour morning routine. You need ONE non-negotiable 15-minute anchor that you never skip — it anchors your identity as someone who follows through.</span></li>
+    </ul>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li><strong>Behavioural identity theory</strong>: Every action you take is a vote for the kind of person you're becoming (James Clear, Atomic Habits). A 15-minute walk isn't just exercise — it's a vote for "I am disciplined."</li>
+        <li>Discipline is not about willpower — it's about removing the decision. Design your environment so the default behaviour is the healthy one.</li>
+        <li>Body language and confidence are bidirectional. Amy Cuddy's research: adopting a confident posture literally changes your hormonal state. So discipline that shows up in how you hold your body, how you walk, how you speak — it all feeds back into how you feel.</li>
+        <li><strong>Non-negotiable anchors</strong> (one sacred daily habit) create psychological stability. Even when life is chaotic, you have one thing that proves to yourself you're still on track.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Pick your 15-minute non-negotiable daily routine — it could be a walk, journaling, studying, stretching, reading, or anything intentional. Commit to doing it every day this week, no matter what.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c5">
+        <label for="c5">My non-negotiable is locked in 🌷</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 6 ===== -->
+  <article class="chapter" id="ch6">
+    <div class="chapter-deco">🌸</div>
+    <div class="chapter-header">
+      <div class="chapter-num">6</div>
+      <div class="chapter-title-block">
+        <h2>Social Grace & Awkwardness</h2>
+        <span class="chapter-subtitle">Steady presence over desperate performance 🌿</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 Why Social Settings Feel Scary</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">🔍</span><span><strong>Hyper-awareness of yourself</strong> is the root cause of social awkwardness. You're monitoring your own voice, your own hands, your own expressions — instead of being present with others.</span></li>
+      <li><span class="li-icon">🔄</span><span>Stop rehearsing conversations in your head before they happen. <em>"What if they say this, then I'll say that…"</em> — this kills natural flow and makes you seem disconnected.</span></li>
+      <li><span class="li-icon">👂</span><span><strong>Be a genuinely good listener.</strong> Listening fully is one of the rarest and most magnetic social skills. People remember how you made them feel — and being truly heard feels like a gift.</span></li>
+    </ul>
+
+    <div class="insight-box">
+      <span class="insight-icon">🌿</span>
+      <p><strong>The Rule of Social Gatherings</strong> Shift your focus from yourself to the people around you. Get curious about them. Social anxiety shrinks when your attention is outward, not inward.</p>
+    </div>
+
+    <ul class="notes-list">
+      <li><span class="li-icon">🌺</span><span><strong>Adjust gracefully — but never erase yourself.</strong> You can read a room and tone-match without becoming a chameleon with no identity.</span></li>
+      <li><span class="li-icon">🏔️</span><span><strong>You don't need to dominate every room — you just need to be steady in it.</strong> Quiet presence with clear energy is more powerful than being the loudest voice.</span></li>
+      <li><span class="li-icon">🗣️</span><span><strong>Clear voice. Clear mind. Clear opinion.</strong> Everyone can have these — it's just practice. Speaking with clarity communicates self-respect.</span></li>
+    </ul>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li><strong>Spotlight effect</strong> (cognitive bias): We dramatically overestimate how much others are noticing and judging us. Everyone is mostly focused on themselves. You are not on trial.</li>
+        <li>Great conversationalists ask questions from genuine curiosity — not to fill silence. <strong>FORD technique</strong>: Family, Occupation, Recreation, Dreams. Ask about these topics and you'll never run dry.</li>
+        <li>Silence is not awkward — discomfort with silence is. A woman who can sit comfortably in quiet doesn't need to fill every gap. This calm is perceived as confidence and depth.</li>
+        <li>High-value women hold their opinion gently but clearly. They share views, accept disagreement with grace, and don't need others to agree to feel validated.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Next time you're in a group setting — class, family gathering, team meeting — share one thought or opinion without mentally rehearsing it beforehand. Say it, then let it go. Don't replay or overanalyze afterward.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c6">
+        <label for="c6">Spoke up and let it go ✨</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 7 ===== -->
+  <article class="chapter" id="ch7">
+    <div class="chapter-deco">💗</div>
+    <div class="chapter-header">
+      <div class="chapter-num">7</div>
+      <div class="chapter-title-block">
+        <h2>Healthy Female Friendships</h2>
+        <span class="chapter-subtitle">The ones who make you grow 🌱</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 3 Qualities of a Real Friend</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">💬</span><span><strong>They advise you but don't force you.</strong> A real friend shares their perspective, but respects your right to choose your own path — even when they disagree.</span></li>
+      <li><span class="li-icon">🤝</span><span><strong>They support you but don't control you.</strong> Support looks like showing up, cheering, being present — not steering your life according to their preferences.</span></li>
+      <li><span class="li-icon">💎</span><span><strong>They're honest with you but never insult you.</strong> There's a difference between loving truth-telling and weaponizing information to make you feel small.</span></li>
+    </ul>
+
+    <div class="insight-box">
+      <span class="insight-icon">🌸</span>
+      <p><strong>No Jealousy, No Competition</strong> A healthy friendship has absolutely no score-keeping. Her success doesn't diminish yours. Her glow doesn't dim yours. Real sisterhood celebrates — it never competes.</p>
+    </div>
+
+    <ul class="notes-list">
+      <li><span class="li-icon">📈</span><span>Healthy friendships make you grow. You leave conversations feeling energized, inspired, and safe — not drained, confused, or small.</span></li>
+      <li><span class="li-icon">🚫</span><span>A friendship that consistently makes you feel less than, inadequate, or like you need to perform is not neutral — it is actively toxic.</span></li>
+    </ul>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li>Research (Harvard Adult Development Study) shows that the quality of your relationships is the single strongest predictor of life satisfaction and wellbeing — more than career, wealth, or fame.</li>
+        <li>Female friendships with high psychological safety are uniquely powerful. You grow fastest in environments where you can be honest and vulnerable without fear of judgment.</li>
+        <li><strong>Green flags</strong> to look for: She celebrates your wins publicly. She gives feedback privately. She doesn't share your secrets. She shows up without keeping score. She has a full life of her own — she doesn't need you to be her everything.</li>
+        <li>A woman surrounded by growth-oriented, ambitious, kind women will naturally be pulled upward. Your average is the average of your inner circle.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Honestly analyze your current friend circle. Who energizes you? Who drains you? Who celebrates you genuinely? Who subtly competes? Write it down privately. You don't have to act yet — just see clearly.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c7">
+        <label for="c7">Did my friendship audit 🌷</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 8 ===== -->
+  <article class="chapter" id="ch8">
+    <div class="chapter-deco">🌷</div>
+    <div class="chapter-header">
+      <div class="chapter-num">8</div>
+      <div class="chapter-title-block">
+        <h2>Boundaries With Friends</h2>
+        <span class="chapter-subtitle">Your peace is non-negotiable 🕊️</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 The Art of Not Oversharing</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">🤐</span><span><strong>You don't need to overshare.</strong> Not every friend is entitled to every part of your life. Privacy is not distance — it's self-protection and discernment.</span></li>
+      <li><span class="li-icon">🔋</span><span><strong>Learn to say when you're tired.</strong> A friendship where you can't express exhaustion without it becoming a problem is fragile — and probably one-sided.</span></li>
+      <li><span class="li-icon">⚖️</span><span>A friendship that can't survive you having a boundary was not a secure friendship to begin with. Healthy people respect healthy limits.</span></li>
+    </ul>
+
+    <div class="insight-box">
+      <span class="insight-icon">🕊️</span>
+      <p><strong>Boundaries Are Self-Respect in Action</strong> Setting a boundary isn't about punishing someone — it's about telling the truth about what you need. It's one of the highest acts of self-love and mutual respect.</p>
+    </div>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li><strong>Oversharing</strong> is often a trauma response — it creates a false sense of closeness. Real intimacy builds gradually, through consistent trust, not through emotional dumping.</li>
+        <li>Boundaries protect relationships, not just individuals. A relationship with healthy limits can last decades. One with no limits burns out or becomes resentful fast.</li>
+        <li>Types of friendship boundaries worth knowing: <strong>emotional</strong> (what you vent about), <strong>time</strong> (how available you are), <strong>physical</strong> (personal space and touch), <strong>informational</strong> (what you share about others).</li>
+        <li>The phrase "I can't talk right now, can we connect later?" is a complete sentence. You don't owe anyone an explanation for protecting your energy.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Draw one single boundary with a friend this week. It doesn't have to be dramatic — it can be as simple as declining a call when you're exhausted, or choosing not to share a personal update. Practice it once.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c8">
+        <label for="c8">Set one boundary 💪🏻</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 9 ===== -->
+  <article class="chapter" id="ch9">
+    <div class="chapter-deco">✨</div>
+    <div class="chapter-header">
+      <div class="chapter-num">9</div>
+      <div class="chapter-title-block">
+        <h2>Releasing Old Friendships</h2>
+        <span class="chapter-subtitle">Growing apart is not failing — it's evolving 🦋</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 When Friendships Change</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">🦋</span><span><strong>Friendships and groups change because your growth rate changes.</strong> You are not the same person you were 2 years ago. Your interests, values, and energy have evolved — and that's a sign of growth, not disloyalty.</span></li>
+      <li><span class="li-icon">🌱</span><span>If a friendship is now based entirely on shared history — not shared present or future — it may have naturally run its course.</span></li>
+      <li><span class="li-icon">🔓</span><span><strong>Release friendships gracefully.</strong> You don't owe anyone a dramatic confrontation. A quiet, respectful fading is an honourable exit.</span></li>
+      <li><span class="li-icon">👑</span><span><strong>Main character girls don't belong in the past.</strong> You can love the memories without staying in a chapter that no longer fits who you're becoming.</span></li>
+    </ul>
+
+    <div class="insight-box">
+      <span class="insight-icon">🦋</span>
+      <p><strong>It's Not Betrayal — It's Evolution</strong> Outgrowing a friendship doesn't mean they were bad or you were bad. It means you've both changed. Sometimes the kindest thing is to release with love rather than stay out of guilt.</p>
+    </div>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ Going Deeper — Advanced Insight</div>
+      <ul>
+        <li>Sociologists identify three types of friendship endings: <strong>sudden</strong> (a betrayal), <strong>gradual</strong> (a natural drift), and <strong>intentional</strong> (a conscious choice to release). Gradual is by far the most common and least painful.</li>
+        <li>Guilt-based friendships are maintenance-heavy and joy-poor. You stay because you "should," not because the relationship fills you. This is a form of self-abandonment.</li>
+        <li>The women you need at 22 are often not the women you need at 28. This is completely natural. Your friendship circles are supposed to evolve as you do.</li>
+        <li>Creating space by releasing draining connections opens room for aligned relationships that match who you're becoming — not who you used to be.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Mini Challenge</h4></div>
+      <p>Think of one friendship that feels like it belongs to a previous chapter of your life. You don't need to burn bridges today. Just acknowledge honestly to yourself: has this connection run its natural course? What would releasing it gently look like?</p>
+      <div class="check-area">
+        <input type="checkbox" id="c9">
+        <label for="c9">Sat with this honestly 🌸</label>
+      </div>
+    </div>
+  </article>
+
+  <div class="bow-divider">🎀 · 🌸 · 🎀</div>
+
+  <!-- ===== CHAPTER 10 ===== -->
+  <article class="chapter" id="ch10">
+    <div class="chapter-deco">👑</div>
+    <div class="chapter-header">
+      <div class="chapter-num">10</div>
+      <div class="chapter-title-block">
+        <h2>Staying Her — The Final Rules</h2>
+        <span class="chapter-subtitle">You've been her all along. Now stay there. 👑</span>
+      </div>
+    </div>
+
+    <div class="section-label">🌸 The Main Character Girl Is…</div>
+    <ul class="notes-list">
+      <li><span class="li-icon">🕊️</span><span><strong>Calm</strong> — not reactive. She doesn't match chaos energy. She responds, she doesn't spiral.</span></li>
+      <li><span class="li-icon">💎</span><span><strong>Confident</strong> — not loud. Her confidence is quiet and unshakeable, built on substance, not performance.</span></li>
+      <li><span class="li-icon">🌿</span><span><strong>Mature</strong> — not trying to prove herself. She handles criticism, growth, and change with grace.</span></li>
+      <li><span class="li-icon">📈</span><span><strong>Growth-oriented</strong> — not comfort-seeking. She chooses what makes her better, not just what feels safe.</span></li>
+    </ul>
+
+    <div class="insight-box">
+      <span class="insight-icon">👑</span>
+      <p><strong>Choose Forward-Facing Friends</strong> Surround yourself with women whose future directions align with yours. Not women who want you to stay the same because your growth makes them uncomfortable.</p>
+    </div>
+
+    <div class="section-label">🌸 The Final Challenge — Write Your Rules</div>
+
+    <div class="quote-block">
+      🎀 <strong>Rules for My Friendships</strong><br>
+      — I will not be jealous of her wins<br>
+      — I will not compete with her success<br>
+      — I will celebrate her genuinely and loudly<br>
+      — I will be honest with love, not cruelty<br>
+      — I will show up when it matters, not just when it's convenient<br>
+      — I will release what has run its course with grace
+    </div>
+
+    <div class="quote-block">
+      🌸 <strong>Rules for Myself</strong><br>
+      — I will not overshare with those who haven't earned my depth<br>
+      — I will make decisions for myself without endless consensus<br>
+      — I will protect my peace before my social image<br>
+      — I will not stay small to make others comfortable<br>
+      — I will show up for my own life, every single day<br>
+      — I will remember: she is not a threat. She is a mirror.
+    </div>
+
+    <div class="advanced-box">
+      <div class="adv-label">✦ The Bigger Picture — Long Game Thinking</div>
+      <ul>
+        <li>Identity is cumulative. Every chapter in this course is one brick. The wall you're building is the woman you're becoming. Brick by brick, decision by decision.</li>
+        <li>The main character energy isn't a persona you put on — it's who you are when you stop shrinking, stop comparing, and stop performing for others. It's subtraction, not addition.</li>
+        <li>You'll have bad days. Days when the scrolling wins, the comparison creeps back in, the discipline slips. That's not failure — that's being human. The practice is returning to yourself, again and again.</li>
+        <li><strong>The most powerful thing you can do for any woman around you is to be fully, unashamedly yourself.</strong> Your confidence gives others permission to claim theirs.</li>
+      </ul>
+    </div>
+
+    <div class="challenge-box">
+      <div class="challenge-header"><span>🎯</span><h4>Final Challenge</h4></div>
+      <p>Write two lists: <strong>(1) Rules for your friendships</strong> — how you will and won't show up for others. <strong>(2) Rules for yourself</strong> — the standards and promises you're making to the woman you're becoming. Keep them somewhere you'll see them weekly.</p>
+      <div class="check-area">
+        <input type="checkbox" id="c10">
+        <label for="c10">I wrote my rules. She is becoming. 👑</label>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div style="font-size: 2.5rem; margin-bottom: 16px; animation: bowBounce 2s ease-in-out infinite;">🎀</div>
+  <p>Personal notes · kept for my own growth</p>
+  <p style="margin-top: 6px; font-size: 1rem; color: var(--pink-mid);">She who grows in silence, blooms loudly. 🌸</p>
+  <small style="margin-top: 16px; display: block;">private study notes · not for redistribution</small>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progressBar').style.width = (scrollTop / docHeight * 100) + '%';
+    const btn = document.getElementById('backTop');
+    btn.classList.toggle('show', scrollTop > 400);
+  });
+
+  // Intersection observer for chapter reveal
+  const chapters = document.querySelectorAll('.chapter');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  chapters.forEach(c => observer.observe(c));
+
+  // Sparkle cursor trail
+  const sparkles = ['🌸','✨','🎀','💗','🌷','⭐','🌺'];
+  let lastSparkle = 0;
+  document.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    if (now - lastSparkle < 120) return;
+    lastSparkle = now;
+    const el = document.createElement('div');
+    el.className = 'sparkle';
+    el.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+    el.style.left = e.clientX + 'px';
+    el.style.top = e.clientY + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
+  });
+</script>
+</body>
+</html>
